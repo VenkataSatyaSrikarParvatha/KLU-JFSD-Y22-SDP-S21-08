@@ -1,0 +1,141 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* Main container for form */
+.register-container {
+    background: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 40px;
+}
+
+/* Header of form */
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #5c6bc0;
+}
+
+/* Input fields and labels styling */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #5c6bc0;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+.input-group textarea:focus {
+    border-color: #5c6bc0;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Button Styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+    background-color: #5c6bc0;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #3f4a84;
+}
+
+button[type="submit"]:active {
+    background-color: #2d3a5f;
+}
+
+/* Success Message Styling */
+.success-message {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Link Styling for Login */
+.login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.login-link a {
+    color: #5c6bc0;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+    color: #3f4a84;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .register-container {
+        padding: 20px;
+        width: 90%;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+        padding: 10px;
+    }
+
+    button[type="submit"] {
+        padding: 12px;
+    }
+}

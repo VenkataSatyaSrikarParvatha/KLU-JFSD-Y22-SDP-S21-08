@@ -1,0 +1,91 @@
+/* General Reset and Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Initially hidden */
+    background-color: #333;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar.open {
+    left: 0; /* Show the sidebar */
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    font-size: 30px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    cursor: pointer;
+}
+
+/* Main Content Area */
+.main-content {
+    margin-left: 0;
+    padding: 16px;
+    transition: margin-left 0.5s;
+}
+
+.main-content h1 {
+    font-size: 28px;
+    color: #333;
+}
+
+.openbtn {
+    font-size: 30px;
+    color: #333;
+    border: none;
+    background-color: #f4f4f4;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design: On mobile devices, the sidebar will be hidden by default */
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+}

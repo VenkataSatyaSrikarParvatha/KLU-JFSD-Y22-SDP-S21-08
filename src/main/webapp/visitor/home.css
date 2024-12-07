@@ -1,0 +1,162 @@
+/* General Reset */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Background Image Setup */
+body {
+    background-image: url('https://wallpaperaccess.com/full/1528068.jpg');
+    background-size: cover; /* Ensure the image covers the viewport */
+    background-position: center;
+    background-attachment: fixed; /* Fixed background */
+    background-repeat: no-repeat;
+}
+
+/* Full-Height Sections (Each slide takes full viewport height) */
+.slides-container {
+    scroll-snap-type: y mandatory; /* Vertical snap for scroll */
+    overflow-y: scroll; /* Enable vertical scrolling */
+    height: 100%; /* Full height for the container */
+}
+
+/* Each slide occupies a full screen */
+.slide {
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    scroll-snap-align: start; /* Snapping to each slide */
+    position: relative;
+    transition: transform 0.5s ease; /* Smooth slide transition */
+}
+
+/* Overlay to improve readability over background image */
+.slide .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+}
+
+/* Content Container - This will hold text and login buttons */
+.content {
+    z-index: 1; /* Above the overlay */
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    max-width: 1200px;
+    align-items: center;
+    height: 100%;
+    text-align: left;
+    padding: 0 20px;
+    transition: transform 0.3s ease; /* Smooth content transition */
+}
+
+/* Left side - Role description */
+.info {
+    width: 45%;
+    font-size: 1.5rem;
+    line-height: 1.6;
+    color: white;
+}
+
+/* Right side - Login form */
+.login {
+    width: 45%;
+    text-align: center;
+}
+
+/* Stylish vertical separator between the left and right sections */
+.separator {
+    width: 5px; /* Thicker line */
+    background: linear-gradient(45deg, #fff, #ddd); /* Gradients for a more dynamic effect */
+    height: 60%;
+    margin: 0 30px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Soft shadow for better visual effect */
+}
+
+/* Login buttons styling */
+.login a {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 15px 0;
+    font-size: 1.2rem;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4); /* Shadow for better button pop */
+}
+
+/* Hover effect for login buttons */
+.login a:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+/* Footer Styling */
+.footer {
+    width: 100%;
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3); /* Shadow for footer */
+}
+
+.footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .info, .login {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .separator {
+        display: none; /* Remove the separator on small screens */
+    }
+
+    .login a {
+        font-size: 1.1rem;
+        padding: 12px 20px;
+    }
+
+    .slide {
+        height: auto; /* Allow slides to adjust height on mobile */
+    }
+}

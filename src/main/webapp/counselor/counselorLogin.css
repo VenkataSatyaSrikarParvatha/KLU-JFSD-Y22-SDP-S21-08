@@ -1,0 +1,127 @@
+@charset "UTF-8";
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(135deg, rgba(255, 205, 0, 0.8), rgba(255, 105, 180, 0.8));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Container for all content */
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: slideIn 1s ease-in-out;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Message Area */
+.message {
+    text-align: center;
+    color: red;
+    margin-bottom: 20px;
+}
+
+/* Form Styling */
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Groups */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.input-group input {
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Button Styling */
+.button-group {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-login {
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-login:hover {
+    background-color: #e67e22;
+}
+
+/* Navigation Links */
+.nav-links {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.nav-links p {
+    font-size: 14px;
+    color: #555;
+}
+
+.nav-links .link {
+    color: #f39c12;
+    text-decoration: none;
+}
+
+.nav-links .link:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes slideIn {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
