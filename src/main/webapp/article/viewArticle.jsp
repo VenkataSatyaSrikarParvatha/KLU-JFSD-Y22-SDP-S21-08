@@ -1,102 +1,192 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>${article.title}</title>
+
+    <!-- Internal CSS -->
     <style>
+        /* Global Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f7f7f7;
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Container */
         .container {
+            width: 85%;
+            max-width: 900px;
             margin: 50px auto;
-            max-width: 800px;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        h1 {
+        /* Article Header with Image */
+        .article-header {
             text-align: center;
-            color: #2193b0;
-            font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            position: relative;
         }
 
-        .article-content {
-            margin-bottom: 20px;
-        }
-
-        .author-info {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border-radius: 5px;
-        }
-
-        .image-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .image-container img {
-            max-width: 100%;
+        .article-header img {
+            width: 100%;
             height: auto;
-            border-radius: 5px;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .actions {
-            text-align: center;
+        .article-header h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 700;
             margin-top: 20px;
+            line-height: 1.3;
         }
 
-        .actions a {
+        /* Article Metadata */
+        .article-header .metadata {
+            font-size: 1rem;
+            color: #7f8c8d;
+            margin-top: 10px;
+        }
+
+        .article-header .metadata span {
+            margin-right: 15px;
+        }
+
+        /* Article Content Section */
+        .article-content {
+            margin-top: 40px;
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .article-content h2 {
+            color: #34495e;
+            font-size: 2rem;
+            margin-top: 40px;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+        }
+
+        /* Author Info Section */
+        .author-info {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #34495e;
+            margin-top: 40px;
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .author-info span {
+            font-weight: 600;
+        }
+
+        /* Floating Back Button */
+        .actions {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3498db;
+            padding: 15px 30px;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
             text-decoration: none;
-            color: #fff;
-            background-color: #2193b0;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin: 5px;
-            transition: background-color 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
 
-        .actions a:hover {
-            background-color: #6dd5ed;
+        .actions:hover {
+            background-color: #2980b9;
+            transform: translateY(-5px);
         }
 
+        /* Responsive Design for Mobile */
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                width: 90%;
+                padding: 20px;
+            }
+
+            .article-header h1 {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .actions {
+                font-size: 1rem;
+                padding: 12px 25px;
+            }
+
+            .image-container img {
+                width: 100%;
             }
         }
+
     </style>
 </head>
 <body>
+
+    <!-- Main Content Container -->
     <div class="container">
-        <h1>${article.title}</h1>
-
-        <div class="article-content">
-            <p><strong>Context:</strong> ${article.context}</p>
-            <p><strong>Content:</strong> ${article.content}</p>
-        </div>
-
-        <div class="image-container">
+        <!-- Article Header with Image -->
+        <div class="article-header">
             <c:if test="${not empty article.image}">
                 <img src="/getArticleImage?id=${article.id}" alt="Article Image" />
             </c:if>
+            <h1>${article.title}</h1>
+            <div class="metadata">
+                <span><strong>Published on:</strong> ${article.createdAt}</span>
+                <span><strong>By:</strong> ${article.authorName},</span>
+                <span>${article.isAnonymous ? 'Anonymous' : article.authorRole}</span>
+            </div>
         </div>
 
+        <!-- Article Content Section -->
+        <div class="article-content">
+            <h2>Context:</h2>
+            <p>${article.context}</p>
+            <h2>Content:</h2>
+            <p>${article.content}</p>
+        </div>
+
+        <!-- Author Info Section -->
         <div class="author-info">
-            <p><strong>Author Name:</strong> ${article.authorName}</p>
-            <p><strong>Author Role:</strong> ${article.authorRole}</p>
-            <p><strong>Created At:</strong> ${article.createdAt}</p>
-            <p><strong>Anonymous:</strong> ${article.isAnonymous ? 'Yes' : 'No'}</p>
-        </div>
+            <p><strong>Author:</strong> ${article.authorName}</p>
+            <p><strong>Role:</strong> ${article.authorRole}</p>
 
-        <div class="actions">
-            <a href="/articles">Back to Articles List</a>
         </div>
     </div>
+
+    <!-- Floating Back Button -->
+    <a href="/articles" class="actions">Back to Articles List</a>
+
 </body>
 </html>

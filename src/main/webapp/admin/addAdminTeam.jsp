@@ -121,7 +121,7 @@
     </style>
 </head>
 <body>
-    <h3>Add Admin Team Member</h3>
+    <h3>Add Curator</h3>
     <div class="form-container">
 
         <!-- Spring form for adding admin team -->
@@ -198,7 +198,7 @@
 
                 <tr>
                     <td colspan="2" class="button-container">
-                        <input type="submit" value="Add Admin Team Member" />
+                        <input type="submit" value="Add Curator" />
                         <input type="reset" value="Clear" />
                     </td>
                 </tr>

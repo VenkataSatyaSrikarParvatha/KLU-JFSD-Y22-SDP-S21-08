@@ -119,8 +119,8 @@
         <a href="viewalldoctors"><i class="fas fa-user-md"></i> View Doctors</a>
         <a href="/viewalllegaladvisors"><i class="fas fa-gavel"></i> View Legal Advisors</a>
         <a href="/viewallsurvivors"><i class="fas fa-heart"></i> View Survivors</a>
-        <a href="/viewalladminteam"><i class="fas fa-users-cog"></i> View Admin Team</a>
-        <a href="addAdminTeam"><i class="fas fa-user-plus"></i> Add Admin Team</a>
+        <a href="/viewalladminteam"><i class="fas fa-users-cog"></i> View Curator</a>
+        <a href="addAdminTeam"><i class="fas fa-user-plus"></i> Add Curator</a>
         <a href="/adminlogout"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
 

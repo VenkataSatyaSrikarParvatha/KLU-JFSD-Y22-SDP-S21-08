@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+ <a href="survivorlogin"> Victim Login</a>
+ <a href="counselorLogin"> Counselor Login</a>
 </body>
 </html>

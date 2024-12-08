@@ -162,7 +162,7 @@
 </head>
 <body>
     <div class="content">
-        <h2>Admin Team Details</h2>
+        <h2>Curator Details</h2>
         <div class="admin-details-card">
             <!-- Header with Profile Image and Name -->
             <div class="admin-details-header">

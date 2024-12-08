@@ -9,82 +9,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Counselor Profile</title>
     <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
         .container {
-            margin: 50px auto;
-            max-width: 800px;
+            margin: 40px auto;
+            max-width: 900px;
             background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             text-align: center;
-            color: #2193b0;
-            font-size: 2rem;
+            color: #4A90E2;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
             margin-bottom: 20px;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table th, table td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        table th {
-            background-color: #6dd5ed;
-            color: white;
-            font-weight: bold;
-        }
-
-        table td {
-            background-color: #f9f9f9;
-        }
-
-        .profile-img {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .profile-img img {
-            width: 150px;
-            height: 150px;
+        .profile-header img {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            border: 3px solid #2193b0;
+            border: 4px solid #4A90E2;
             object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .profile-header .info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info h2 {
+            color: #333;
+            font-size: 1.8rem;
+            margin: 0;
+        }
+
+        .info p {
+            color: #777;
+            font-size: 1rem;
+        }
+
+        .details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .detail-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .detail-item .title {
+            font-weight: bold;
+            color: #4A90E2;
+            margin-bottom: 5px;
+        }
+
+        .detail-item .value {
+            color: #555;
         }
 
         .actions {
             text-align: center;
-            margin-top: 20px;
         }
 
         .actions a {
             text-decoration: none;
             color: #fff;
-            background-color: #2193b0;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin: 5px;
-            transition: background-color 0.3s ease;
+            background-color: #4A90E2;
+            padding: 12px 20px;
+            border-radius: 30px;
+            margin: 10px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
         .actions a:hover {
-            background-color: #6dd5ed;
+            background-color: #357ABD;
+            transform: translateY(-2px);
         }
 
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+            .details {
+                grid-template-columns: 1fr;
             }
 
-            table th, table td {
-                font-size: 0.9rem;
+            .profile-header {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .profile-header img {
+                margin-bottom: 20px;
+            }
+
+            .info h2 {
+                text-align: center;
             }
         }
     </style>
@@ -93,69 +133,58 @@
     <div class="content">
         <div class="container">
             <h1>Your Profile</h1>
-                        <!-- Profile image -->
-            <div class="profile-img">
-                <img src="/counselor/profileImage?id=${counselor.id}" alt="Profile Image" width="100">
+            
+            <!-- Profile Header Section -->
+            <div class="profile-header">
+                <img src="/counselor/profileImage?id=${counselor.id}" alt="Profile Image">
+                <div class="info">
+                    <h2>${counselor.username}</h2>
+                    <p>${counselor.specialization} Specialist</p>
+                    <p><strong>Status:</strong> ${counselor.status}</p>
+                </div>
             </div>
-            <!-- Display profile details -->
-            <table>
-                <tr>
-                    <th>ID</th>
-                    <td>${counselor.id}</td>
-                </tr>
-                <tr>
-                    <th>Username</th>
-                    <td>${counselor.username}</td>
-                </tr>
-                <tr>
-                    <th>Email</th>
-                    <td>${counselor.email}</td>
-                </tr>
-                <tr>
-                    <th>Phone</th>
-                    <td>${counselor.phone}</td>
-                </tr>
-                <tr>
-                    <th>Date of Birth</th>
-                    <td>${counselor.dateOfBirth}</td>
-                </tr>
-                <tr>
-                    <th>Gender</th>
-                    <td>${counselor.gender}</td>
-                </tr>
-                <tr>
-                    <th>Address</th>
-                    <td>${counselor.address}</td>
-                </tr>
-                <tr>
-                    <th>Aadhaar Number</th>
-                    <td>${counselor.aadhaarNumber}</td>
-                </tr>
-                <tr>
-                    <th>Specialization</th>
-                    <td>${counselor.specialization}</td>
-                </tr>
-                <tr>
-                    <th>Experience</th>
-                    <td>${counselor.experience} years</td>
-                </tr>
-                <tr>
-                    <th>Bio</th>
-                    <td>${counselor.bio}</td>
-                </tr>
-                <tr>
-                    <th>Earnings</th>
-                    <td>${counselor.earnings}</td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td>${counselor.status}</td>
-                </tr>
-            </table>
+            
+            <!-- Profile Details Section -->
+            <div class="details">
+                <div class="detail-item">
+                    <div class="title">Email</div>
+                    <div class="value">${counselor.email}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Phone</div>
+                    <div class="value">${counselor.phone}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Date of Birth</div>
+                    <div class="value">${counselor.dateOfBirth}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Gender</div>
+                    <div class="value">${counselor.gender}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Address</div>
+                    <div class="value">${counselor.address}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Aadhaar Number</div>
+                    <div class="value">${counselor.aadhaarNumber}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Experience</div>
+                    <div class="value">${counselor.experience} years</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Bio</div>
+                    <div class="value">${counselor.bio}</div>
+                </div>
+                <div class="detail-item">
+                    <div class="title">Earnings</div>
+                    <div class="value">${counselor.earnings}</div>
+                </div>
+            </div>
 
-
-
-            <!-- Action buttons -->
+            <!-- Action Buttons Section -->
             <div class="actions">
                 <a href="/counselorUpdateProfile">Update Profile</a>
                 <a href="/counselorLogout">Logout</a>

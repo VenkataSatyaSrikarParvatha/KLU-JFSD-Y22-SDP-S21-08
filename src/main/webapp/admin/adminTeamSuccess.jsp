@@ -56,7 +56,7 @@
 <body>
     <div class="content">
         <!-- Success Message -->
-        <h3>Admin Team Member Added Successfully!</h3>
+        <h3>Curator Added Successfully!</h3>
 
         <c:if test="${not empty message}">
             <div class="success-message">
@@ -66,8 +66,8 @@
 
         <!-- Navigation Buttons -->
         <div class="navigation">
-            <a href="/addAdminTeam" class="btn">Add Another Admin Team Member</a>
-            <a href="/adminDashboard" class="btn">Go to Dashboard</a>
+            <a href="/addAdminTeam" class="btn">Add Another Curator</a>
+            <a href="/adminhome" class="btn">Go to Home</a>
         </div>
     </div>
 </body>

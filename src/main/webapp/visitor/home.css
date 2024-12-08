@@ -113,6 +113,32 @@ body {
     transform: scale(1.05); /* Slight scale on hover */
 }
 
+/* Role Buttons Styling for First Slide */
+.role-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.role-button {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.role-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: black;
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
 /* Footer Styling */
 .footer {
     width: 100%;
@@ -158,5 +184,15 @@ body {
 
     .slide {
         height: auto; /* Allow slides to adjust height on mobile */
+    }
+
+    /* Role buttons for smaller screens */
+    .role-buttons {
+        margin-top: 30px;
+        gap: 10px;
+    }
+
+    .role-button {
+        font-size: 1.1rem;
     }
 }

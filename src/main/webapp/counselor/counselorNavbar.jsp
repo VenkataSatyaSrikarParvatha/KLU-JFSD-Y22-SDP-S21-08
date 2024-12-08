@@ -80,35 +80,28 @@
     <div class="navbar">
         <h2>Counselor Panel</h2>
         <a href="/counselorHome" class="${page == 'home' ? 'active' : ''}">
-            <i class="fas fa-home"></i> Home
+            <i class="fas fa-home" aria-hidden="true"></i> Home
         </a>
         <a href="/counselorProfile" class="${page == 'profile' ? 'active' : ''}">
-            <i class="fas fa-user"></i> Profile
+            <i class="fas fa-user" aria-hidden="true"></i> Profile
         </a>
-        <a href="/counselor/addArticle" class="${page == 'addArticle' ? 'active' : ''}">
-            <i class="fas fa-pen"></i> Write Article
+        <a href="/addArticle" class="${page == 'addArticle' ? 'active' : ''}">
+            <i class="fas fa-pen" aria-hidden="true"></i> Write Article
         </a>
         <a href="/addSession" class="${page == 'addSession' ? 'active' : ''}">
-            <i class="fas fa-calendar-plus"></i> Add Session
+            <i class="fas fa-calendar-plus" aria-hidden="true"></i> Add Session
         </a>
-        
-                <li><a href="/counselor/mySessions">My Sessions</a></li>
-        
-      
-        <li><a href="/viewCounselorSessions">viewCounselorSessions for acceptance Sessions</a></li>
-        
-        
-        
-         </a>
-        <a href="myArticles" >
-            <i class="fas fa-pen"></i>My Article
+        <a href="/counselor/mySessions" class="${page == 'mySessions' ? 'active' : ''}">
+            <i class="fas fa-calendar-alt" aria-hidden="true"></i> My Sessions
         </a>
-        
-        
-        
-        
+        <a href="/viewCounselorSessions" class="${page == 'viewSessions' ? 'active' : ''}">
+            <i class="fas fa-check-circle" aria-hidden="true"></i> View Sessions for Acceptance
+        </a>
+        <a href="/myArticles" class="${page == 'myArticles' ? 'active' : ''}">
+            <i class="fas fa-book" aria-hidden="true"></i> My Articles
+        </a>
         <a href="/counselorLogout">
-            <i class="fas fa-sign-out-alt"></i> Logout
+            <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
         </a>
     </div>
 

@@ -87,11 +87,27 @@
             font-size: 1.2rem;
             color: #333;
         }
+
+        .button {
+            padding: 8px 16px;
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background-color: #2ecc71;
+        }
     </style>
 </head>
 <body>
     <div class="content">
         <h2>My Sessions</h2>
+
         <c:if test="${not empty message}">
             <div class="message">${message}</div>
         </c:if>
@@ -106,6 +122,7 @@
                             <th>Context</th>
                             <th>Date Created</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,6 +136,14 @@
                                     <span class="status ${session.survivorTheVictimStatus.toLowerCase()}">
                                         ${session.survivorTheVictimStatus}
                                     </span>
+                                </td>
+                                <td>
+                                    <c:if test="${session.survivorTheVictimStatus == 'Accepted'}">
+                                        <form action="/sessionDashboard" method="get">
+                                            <input type="hidden" name="sessionId" value="${session.id}" />
+                                            <button type="submit" class="button">Go to Dashboard</button>
+                                        </form>
+                                    </c:if>
                                 </td>
                             </tr>
                         </c:forEach>

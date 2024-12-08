@@ -311,7 +311,7 @@ public class CounselorController {
         session.invalidate(); 
 
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("counselorLogin"); 
+        mv.setViewName("counselor/counselorLogin"); 
         return mv;
     }
 
@@ -339,7 +339,7 @@ public class CounselorController {
 
 
     
-    @PostMapping("counselor/submitArticle")
+    @PostMapping("/submitArticle")
     public ModelAndView submitArticle(HttpServletRequest request,
                                        @RequestParam("title") String ctitle,
                                        @RequestParam("context") String ccontext,
@@ -382,7 +382,7 @@ public class CounselorController {
 
             String msg = articleService.saveArticle(article);
 
-            mv.setViewName("counselor/counselorHome"); 
+            mv.setViewName("counselor/counselorarticlesuccess"); 
             mv.addObject("message", msg);
 
         } catch (Exception e) {
@@ -392,7 +392,7 @@ public class CounselorController {
         return mv;
     }
     
-    @GetMapping("/counselor/addArticle")
+    @GetMapping("/addArticle")
     public String showAddArticleForm(HttpServletRequest request, Model model) {
         HttpSession session = request.getSession();
         Object counselor = session.getAttribute("counselor"); 
@@ -599,26 +599,30 @@ public class CounselorController {
 
     @GetMapping("/counselor/sessionDashboard")
     public ModelAndView viewSessionDashboard(HttpServletRequest request, @RequestParam("sessionId") int sessionId) {
+        // Initialize the ModelAndView with the view name
         ModelAndView mv = new ModelAndView("counselor/sessionDashboard");
 
-        HttpSession session = request.getSession();
-        Counselor counselor = (Counselor) session.getAttribute("counselor");
+        // Get the HttpSession and retrieve the Counselor object from the session
+        HttpSession httpSession = request.getSession();
+        Counselor counselor = (Counselor) httpSession.getAttribute("counselor");
 
+        // Check if the counselor is logged in
         if (counselor != null) {
-            
+            // Fetch session details by ID
             Session sessionDetails = sessionService.findSessionById(sessionId);
+            
+            // If session is found, add session details and list of counselor sessions to the model
             if (sessionDetails != null) {
                 mv.addObject("session", sessionDetails);
                 
+                // Fetch all sessions for this counselor
                 List<Session> counselorSessions = sessionService.getSessionsByCounselorId(counselor.getId());
-                
-                mv.setViewName("counselor/sessionDashboard");
                 mv.addObject("sessions", counselorSessions);
-                
             } else {
                 mv.addObject("message", "Session not found.");
             }
         } else {
+            // If counselor is not logged in, redirect to the login page with a message
             mv.setViewName("counselor/counselorLogin");
             mv.addObject("message", "Please log in first.");
         }

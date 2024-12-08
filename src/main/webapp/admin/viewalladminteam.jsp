@@ -142,7 +142,7 @@
 </head>
 <body>
     <div class="content">
-        <h2>All Admin Team Members</h2>
+        <h2>All Curator</h2>
         <div class="admin-cards-container">
             <c:forEach var="admin" items="${adminTeam}">
                 <div class="admin-card">

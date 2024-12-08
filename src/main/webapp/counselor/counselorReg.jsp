@@ -66,7 +66,6 @@
                 return false;
             }
 
-
             // Validate Profile Image
             var profileImage = document.forms["counselorRegForm"]["profileImage"].value;
             if (profileImage.trim() !== "") {
@@ -96,54 +95,79 @@
         <div class="form-section">
             <h2>Counselor Registration</h2>
             <form name="counselorRegForm" action="insertCounselor" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-                <label for="cusername">Username:</label>
-                <input type="text" name="cusername" required><br>
+                <div class="form-group">
+                    <label for="cusername">Username:</label>
+                    <input type="text" name="cusername" id="cusername" required><br>
+                </div>
 
-                <label for="cpwd">Password:</label>
-                <input type="password" name="cpwd" required><br>
+                <div class="form-group">
+                    <label for="cpwd">Password:</label>
+                    <input type="password" name="cpwd" id="cpwd" required><br>
+                </div>
 
-                <label for="cemail">Email:</label>
-                <input type="email" name="cemail" required><br>
+                <div class="form-group">
+                    <label for="cemail">Email:</label>
+                    <input type="email" name="cemail" id="cemail" required><br>
+                </div>
 
-                <label for="cphone">Phone:</label>
-                <input type="text" name="cphone" required><br>
+                <div class="form-group">
+                    <label for="cphone">Phone:</label>
+                    <input type="tel" name="cphone" id="cphone" required pattern="[0-9]{10}" maxlength="10"><br>
+                </div>
 
-                <label for="cdob">Date of Birth:</label>
-                <input type="date" name="cdob" required><br>
+                <div class="form-group">
+                    <label for="cdob">Date of Birth:</label>
+                    <input type="date" name="cdob" id="cdob" required><br>
+                </div>
 
-                <label for="cgender">Gender:</label>
-                <select name="cgender" required>
-                    <option value="">Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select><br>
+                <div class="form-group">
+                    <label for="cgender">Gender:</label>
+                    <select name="cgender" id="cgender" required>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select><br>
+                </div>
 
-                <label for="caddress">Address:</label>
-                <input type="text" name="caddress" required><br>
+                <div class="form-group">
+                    <label for="caddress">Address:</label>
+                    <input type="text" name="caddress" id="caddress" required><br>
+                </div>
 
-                <label for="caadhaar">Aadhaar Number:</label>
-                <input type="text" name="caadhaar" required><br>
+                <div class="form-group">
+                    <label for="caadhaar">Aadhaar Number:</label>
+                    <input type="text" name="caadhaar" id="caadhaar" required maxlength="12" pattern="\d{12}"><br>
+                </div>
 
-                <label for="cspecialization">Specialization:</label>
-                <input type="text" name="cspecialization" required><br>
+                <div class="form-group">
+                    <label for="cspecialization">Specialization:</label>
+                    <input type="text" name="cspecialization" id="cspecialization" required><br>
+                </div>
 
-                <label for="cexperience">Experience (in years):</label>
-                <input type="number" name="cexperience" required><br>
+                <div class="form-group">
+                    <label for="cexperience">Experience (in years):</label>
+                    <input type="number" name="cexperience" id="cexperience" required><br>
+                </div>
 
-                <label for="cbio">Bio:</label>
-                <textarea name="cbio" required></textarea><br>
+                <div class="form-group">
+                    <label for="cbio">Bio:</label>
+                    <textarea name="cbio" id="cbio" required></textarea><br>
+                </div>
 
+                <div class="form-group">
+                    <label for="profileImage">Profile Image:</label>
+                    <input type="file" name="profileImage" id="profileImage" accept="image/*"><br>
+                </div>
 
-
-                <label for="profileImage">Profile Image:</label>
-                <input type="file" name="profileImage" accept="image/*"><br>
-
-                <label for="verificationPdf">Verification PDF:</label>
-                <input type="file" name="verificationPdf" accept="application/pdf"><br>
+                <div class="form-group">
+                    <label for="verificationPdf">Verification PDF:</label>
+                    <input type="file" name="verificationPdf" id="verificationPdf" accept="application/pdf"><br>
+                </div>
 
                 <button type="submit">Register</button>
             </form>
+
             <p><a href="counselorLogin">Go to Login</a></p>
             <p><a href="visitorHome">Go to Visitor Home</a></p>
         </div>

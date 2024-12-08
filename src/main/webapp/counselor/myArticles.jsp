@@ -9,105 +9,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Articles</title>
     <style>
-/* Body and General Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f7fa;
-}
+        /* Body and General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fa;
+        }
 
-h1 {
-    color: #2193b0;
-    text-align: center;
-    margin-top: 30px;
-}
+        h1 {
+            color: #2193b0;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 2rem;
+        }
 
-/* Article List */
-.article-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 20px auto;
-    max-width: 800px;
-}
+        /* Article List */
+        .article-list {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px auto;
+            max-width: 800px;
+        }
 
-/* Article Item Styling */
-.article-item {
-    background-color: #ffffff;
-    margin: 15px 0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-}
+        /* Article Item Styling */
+        .article-item {
+            background-color: #ffffff;
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
 
-.article-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-}
+        .article-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
 
-.article-item h2 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
+        .article-item h2 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
 
-.article-item p {
-    color: #555;
-    font-size: 1rem;
-    line-height: 1.5;
-}
+        .article-item p {
+            color: #555;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
 
-/* Message when no articles are available */
-.message {
-    color: red;
-    font-size: 1.2rem;
-    text-align: center;
-    margin-top: 20px;
-}
+        /* Article Image Styling */
+        .article-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
 
-/* Back Link Styling */
-.back-link {
-    display: inline-block;
-    margin-top: 30px;
-    padding: 12px 18px;
-    background-color: #2193b0;
-    color: #ffffff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    text-align: center;
-}
+        /* Message when no articles are available */
+        .message {
+            color: red;
+            font-size: 1.2rem;
+            text-align: center;
+            margin-top: 20px;
+        }
 
-.back-link:hover {
-    background-color: #1c7e8b;
-}
+        /* Back Link Styling */
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 18px;
+            background-color: #2193b0;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-align: center;
+        }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-    .article-item {
-        padding: 15px;
-    }
+        .back-link:hover {
+            background-color: #1c7e8b;
+        }
 
-    .back-link {
-        padding: 10px 15px;
-    }
-}
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .article-item {
+                padding: 15px;
+            }
 
-@media screen and (max-width: 480px) {
-    h1 {
-        font-size: 1.5rem;
-    }
+            .back-link {
+                padding: 10px 15px;
+            }
+        }
 
-    .article-item h2 {
-        font-size: 1.25rem;
-    }
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
 
-    .back-link {
-        font-size: 0.9rem;
-    }
-}
+            .article-item h2 {
+                font-size: 1.25rem;
+            }
 
+            .back-link {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -120,6 +128,10 @@ h1 {
             <!-- Loop through the articles -->
             <c:forEach var="article" items="${articles}">
                 <li class="article-item">
+                    <!-- Display the article image if available -->
+                    <c:if test="${not empty article.image}">
+                        <img src="/getArticleImage?id=${article.id}" alt="Article Image" />
+                    </c:if>
                     <h2>${article.title}</h2>
                     <p><strong>Content:</strong> ${article.content}</p>
                     <p><strong>Context:</strong> ${article.context}</p>

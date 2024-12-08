@@ -11,20 +11,28 @@
 <body>
     <%@ include file="visitor_navbar.jsp" %>
 
-    <!-- Slides Container -->
-    <div class="slides-container">
-        <!-- Slide 1: Welcome Section -->
-        <div class="slide">
-            <div class="content">
-                <div class="info">
-                    <h1>Welcome to Saahas</h1>
-                    <p>Your journey to support, recovery, and resources begins here. Scroll down to explore your options.</p>
-                </div>
-            </div>
+<!-- Slide 1: Welcome Section -->
+<div class="slide">
+    <div class="content">
+        <div class="info">
+            <h1>Welcome to Saahas</h1>
+            <p>Your journey to support, recovery, and resources begins here. Scroll down to explore your options.</p>
         </div>
+        <div class="role-buttons">
+            <!-- Role buttons for navigation to other slides -->
+            <a href="#admin-slide" class="role-button">Admin</a>
+            <a href="#adminteam-slide" class="role-button">Admin Team</a>
+            <a href="#survivor-slide" class="role-button">Victim/Survivor</a>
+            <a href="#counselor-slide" class="role-button">Counselor</a>
+            <a href="#legaladvisor-slide" class="role-button">Legal Advisor</a>
+            <a href="#doctor-slide" class="role-button">Doctor</a>
+        </div>
+    </div>
+</div>
+
 
         <!-- Slide 2: Admin -->
-        <div class="slide">
+        <div id="admin-slide" class="slide">
             <div class="content">
                 <div class="info">
                     <h1>Admin Role</h1>
@@ -38,7 +46,7 @@
         </div>
 
         <!-- Slide 3: Admin Team -->
-        <div class="slide">
+        <div id="adminteam-slide" class="slide">
             <div class="content">
                 <div class="info">
                     <h1>Admin Team</h1>
@@ -52,7 +60,7 @@
         </div>
 
         <!-- Slide 4: Victim/Survivor -->
-        <div class="slide">
+        <div id="survivor-slide" class="slide">
             <div class="content">
                 <div class="info">
                     <h1>Victim/Survivor</h1>
@@ -67,7 +75,7 @@
         </div>
 
         <!-- Slide 5: Counselor -->
-        <div class="slide">
+        <div id="counselor-slide" class="slide">
             <div class="content">
                 <div class="info">
                     <h1>Counselor</h1>
@@ -82,7 +90,7 @@
         </div>
 
         <!-- Slide 6: Legal Advisor -->
-        <div class="slide">
+        <div id="legaladvisor-slide" class="slide">
             <div class="content">
                 <div class="info">
                     <h1>Legal Advisor</h1>
@@ -97,7 +105,7 @@
         </div>
 
         <!-- Slide 7: Doctor -->
-        <div class="slide">
+        <div id="doctor-slide" class="slide">
             <div class="content">
                 <div class="info">
                     <h1>Doctor</h1>

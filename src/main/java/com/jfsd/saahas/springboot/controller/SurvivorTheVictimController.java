@@ -258,7 +258,7 @@ public class SurvivorTheVictimController {
 
         ModelAndView mv = new ModelAndView();
         if (counselor == null) {
-            mv.setViewName("survivor/survivorLogin");
+            mv.setViewName("survivor/survivorlogin");
             mv.addObject("message", "Please log in first.");
             return mv;
         }
@@ -348,7 +348,7 @@ public class SurvivorTheVictimController {
 
         ModelAndView mv = new ModelAndView();
         if (survivor == null) {
-            mv.setViewName("survivor/survivorLogin");
+            mv.setViewName("survivor/survivorlogin");
             mv.addObject("message", "Please log in first.");
             return mv;
         }
@@ -425,6 +425,52 @@ public class SurvivorTheVictimController {
 
         return mv;
     }
+    
+    @GetMapping("/survivor/sessionDetail")
+    public ModelAndView viewSessionDetail(@RequestParam("id") int sessionId) {
+        ModelAndView mv = new ModelAndView("survivor/sessionDetail");
+        Session session = sessionService.findSessionById(sessionId);
+        if (session != null) {
+            mv.addObject("session", session);
+        } else {
+            mv.addObject("message", "Session not found.");
+        }
+        return mv;
+    }
+    @GetMapping("/survivor/sessionDashboard")
+    public ModelAndView viewSurvivorSessionDashboard(HttpServletRequest request, @RequestParam("sessionId") int sessionId) {
+        // Initialize the ModelAndView with the view name for survivor's session dashboard
+        ModelAndView mv = new ModelAndView("survivor/sessionDashboard");
+
+        // Get the HttpSession and retrieve the Survivor object from the session
+        HttpSession httpSession = request.getSession();
+        SurvivorTheVictim survivor = (SurvivorTheVictim) httpSession.getAttribute("survivor");
+
+        // Check if the survivor is logged in
+        if (survivor != null) {
+            // Fetch session details by sessionId
+            Session sessionDetails = sessionService.findSessionById(sessionId);
+            
+            // If the session exists, add session details to the model
+            if (sessionDetails != null) {
+                // Check if the survivor is enrolled and their status is ACCEPTED
+                if ("ACCEPTED".equals(sessionDetails.getSurvivorTheVictimStatus())) {
+                    mv.addObject("session", sessionDetails);
+                } else {
+                    mv.addObject("message", "You are not enrolled in this session or your enrollment status is not accepted.");
+                }
+            } else {
+                mv.addObject("message", "Session not found.");
+            }
+        } else {
+            // If the survivor is not logged in, redirect to the login page with a message
+            mv.setViewName("survivor/survivorLogin");
+            mv.addObject("message", "Please log in first.");
+        }
+
+        return mv;
+    }
+
 
     
 }

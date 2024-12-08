@@ -7,109 +7,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Articles</title>
+
+    <!-- Internal CSS -->
     <style>
-        .container {
-            margin: 50px auto;
-            max-width: 800px;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Global Styles */
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f8ff;  /* Light blue background */
+            color: #333;
         }
 
         h1 {
             text-align: center;
-            color: #2193b0;
-            font-size: 2rem;
-            margin-bottom: 20px;
+            font-size: 3rem;
+            color: #fff;
+            font-weight: 700;
+            margin: 0;
+            padding: 60px 0;
+            background: linear-gradient(135deg, #6a82fb, #fc5c7d); /* Cool purple to pink gradient */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        table {
+        /* Main Container */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Section Title for Articles */
+        .section-title {
+            text-align: center;
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        /* Article Cards Layout */
+        .article-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: space-between;
+        }
+
+        .article-card {
+            width: 30%;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-card img {
             width: 100%;
-            border-collapse: collapse;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #6a82fb; /* Soft purple border */
         }
 
-        table th, table td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
+        .article-card-content {
+            padding: 20px;
         }
 
-        table th {
-            background-color: #6dd5ed;
-            color: white;
+        .article-card-title {
+            font-size: 1.6rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .article-card-excerpt {
+            font-size: 1rem;
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .article-card-actions {
+            text-align: right;
+        }
+
+        .article-card-actions a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #6a82fb; /* Soft purple button */
+            padding: 10px 20px;
+            border-radius: 5px;
             font-weight: bold;
+            transition: background-color 0.3s ease;
         }
 
-        table td {
-            background-color: #f9f9f9;
+        .article-card-actions a:hover {
+            background-color: #fc5c7d; /* Pink hover effect */
         }
 
+        /* No Articles Message */
+        .no-articles {
+            text-align: center;
+            font-size: 1.5rem;
+            color: #888;
+            margin-top: 30px;
+        }
+
+        /* Action Button for New Article */
         .actions {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 50px;
         }
 
         .actions a {
             text-decoration: none;
             color: #fff;
-            background-color: #2193b0;
-            padding: 10px 20px;
+            background-color: #3498db; /* Soft blue button */
+            padding: 12px 30px;
             border-radius: 5px;
-            margin: 5px;
+            font-size: 1.2rem;
             transition: background-color 0.3s ease;
         }
 
         .actions a:hover {
-            background-color: #6dd5ed;
+            background-color: #2980b9; /* Darker blue hover */
         }
 
-        .no-articles {
-            text-align: center;
-            font-size: 1.2rem;
-            color: #888;
-        }
-
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+            .article-card {
+                width: 100%;
             }
 
-            table th, table td {
-                font-size: 0.9rem;
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .actions a {
+                padding: 10px 20px;
+                font-size: 1rem;
             }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1>All Articles</h1>
 
+<body>
+    <h1>All Articles</h1>
+
+    <div class="container">
+        <div class="section-title">Browse through the latest articles</div>
+
+        <!-- Check if articles exist -->
         <c:if test="${not empty articles}">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Context</th>
-                        <th>View</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <c:forEach var="article" items="${articles}">
-                        <tr>
-                            <td>${article.title}</td>
-                            <td>${article.context}</td>
-                            <td><a href="/viewArticle?id=${article.id}">View</a></td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+            <div class="article-list">
+            
+                <!-- Loop through articles and display each in a card format -->
+                <c:forEach var="article" items="${articles}">
+                <br><br>
+               
+                    <div class="article-card">
+                        <!-- Display Image if available -->
+                        <c:if test="${not empty article.image}">
+                            <img src="/getArticleImage?id=${article.id}" alt="Article Image" />
+                        </c:if>
+                        <div class="article-card-content">
+                            <div class="article-card-title">${article.title}</div>
+                            <div class="article-card-excerpt">
+                                ${article.context}
+                            </div>
+                            <div class="article-card-actions">
+                                <a href="/viewArticle?id=${article.id}">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                </c:forEach>
+            </div>
         </c:if>
 
+        <!-- Message if no articles exist -->
         <c:if test="${empty articles}">
             <p class="no-articles">No articles available at the moment.</p>
         </c:if>
 
+        <!-- Create new article button -->
         <div class="actions">
             <a href="/createArticle">Create New Article</a>
         </div>

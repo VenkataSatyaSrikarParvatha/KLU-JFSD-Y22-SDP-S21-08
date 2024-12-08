@@ -192,7 +192,7 @@
                     <p><strong>Rating:</strong> ${doctor.rating}</p>
                     <div class="action-buttons">
                         <a href="viewDoctorDetails?id=${doctor.id}">View Details</a> 
-                        <a href="deletedoctoraction?id=${doctor.id}" onclick="return confirm('Are you sure you want to delete?')">Delete</a> 
+                        <!--  <a href="deletedoctoraction?id=${doctor.id}" onclick="return confirm('Are you sure you want to delete?')">Delete</a> -->
                     </div>
                 </div>
             </c:forEach>
