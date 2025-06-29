@@ -50,7 +50,6 @@
             <strong>Team SDP-S21-08:</strong>
             <ul>
                 <li>Venkata Satya Srikar Parvatha</li>
-                <li>Annapureddy Komali</li>
             </ul>
             Guided by our mentor, <strong>Assistant Professor Jonnalagadda Surya Kiran</strong>, from KL University,
             we have poured our hearts and expertise into making SAAHAS a reality.
